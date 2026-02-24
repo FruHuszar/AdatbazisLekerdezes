@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="UTF-8">
+        <title>SQL gyakorló</title>
+        <link rel="stylesheet" href="sytle.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+        <script type="module" src="sql.js"></script>
+    </head>
+    <body>
+        <main>
+            <h2>SQL gyakorló</h2>
+
+            <textarea id="sqlInput" rows="6" cols="60" placeholder="Írd ide az SQL lekérdezést..."></textarea><br>
+            <button id="runBtn">Futtatás</button>
+
+            <h3>Eredmény:</h3>
+            <pre id="result"></pre>
+        </main>
+        <footer>
+          <a href="github.com/FruHuszar" target="_blank"><img src="profile.jpeg" alt="profile picture"></a>
+          <p>lorem ipsum dolor</p>
+        </footer>
+      
+      
+      <!-- Jobb felső sarokban a gombként viselkedő kép -->
+<img id="menuBtn" src="MySql.png" alt="Menu">
+
+<!-- Full screen overlay menü -->
+<div id="fullMenu">
+    <select>
+        <option>Adatbázis példa 1 - Iskola</option>
+        <option>Adatbázis példa 2 - Étterem</option>
+        <option>Adatbázis példa 3 - Könyvtár</option>
+    </select>
+</div>
+
+<script src="script.js"></script>
+
+    </body>
+</html>
