@@ -152,34 +152,39 @@ initSqlJs({
 
   futtatasGomb.addEventListener("click", () => {
     const lekerdezes = sqlBevitel.value.trim();
-    if (!lekerdezes) {
-      eredmenyMegjelenito.innerHTML = "Nincs adat a mezőben.";
-      return;
-    };
+    
+    // 1. Töröljük az előző eredményt, hogy látszódjon a frissítés
+    eredmenyMegjelenito.innerHTML = "";
+
+    // 2. Ellenőrizzük, hogy üres-e
+    if (lekerdezes === "") {
+        eredmenyMegjelenito.innerHTML = "<strong>Nincs adat a mezőben!</strong>";
+        return; // Fontos, hogy itt megállítsuk a futást
+    }
 
     try {
-      const eredmeny = adatbazis.exec(lekerdezes);
+        const eredmeny = adatbazis.exec(lekerdezes);
 
-      if (eredmeny.length > 0) {
-        eredmenyMegjelenito.innerHTML = HTMLTablazatGeneralas(eredmeny);
-      } else {
-        eredmenyMegjelenito.innerHTML =
-          "A lekérdezés sikeresen lefutott, de nem adott vissza adatot.";
-      }
+        if (eredmeny.length > 0) {
+            eredmenyMegjelenito.innerHTML = HTMLTablazatGeneralas(eredmeny);
+        } else {
+            eredmenyMegjelenito.innerHTML = "A lekérdezés sikeresen lefutott, de nem adott vissza adatot.";
+        }
 
-      //adatbázis kiírás frissítése
-      const parancs = lekerdezes.toUpperCase();
-      if (
-        parancs.includes("CREATE") ||
-        parancs.includes("DROP") ||
-        parancs.includes("ALTER")
-      ) {
-        adatbazisStrukturaMegjelenites();
-      }
+        // Adatbázis struktúra frissítése, ha módosító parancs volt
+        const parancs = lekerdezes.toUpperCase();
+        if (
+            parancs.includes("CREATE") ||
+            parancs.includes("DROP") ||
+            parancs.includes("ALTER")
+        ) {
+            adatbazisStrukturaMegjelenites();
+        }
     } catch (hiba) {
-      eredmenyMegjelenito.innerHTML = "● " + hiba.message;
+        eredmenyMegjelenito.innerHTML = "<span style='color: red;'>● " + hiba.message + "</span>";
     }
-  });
+});
+
 
   adatbazisStrukturaMegjelenites();
 });
