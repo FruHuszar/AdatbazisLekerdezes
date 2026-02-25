@@ -1,0 +1,38 @@
+@media (max-width: 700px) {
+  main {
+    margin: 3vh;
+    padding: 1.5vh;
+  }
+
+  #sqlInput {
+    padding: 1.4vh;
+  }
+
+  #futtatas {
+    padding: 1.5vh 3vh;
+    font-size: 14px;
+  }
+
+  #result {
+    padding: 1.5vh;
+  }
+
+  footer {
+    padding-top: 15vh;
+  }
+
+  #profile,
+  #menuBtn {
+    width: 5.0vh;
+    height: 5.0vh;
+  }
+
+  #fullMenu {
+    padding: 20px;
+  }
+
+  #fullMenu select,
+  #databaseInfos {
+    width: 100%;
+  }
+}
