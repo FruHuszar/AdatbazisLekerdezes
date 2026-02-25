@@ -152,7 +152,10 @@ initSqlJs({
 
   futtatasGomb.addEventListener("click", () => {
     const lekerdezes = sqlBevitel.value.trim();
-    if (!lekerdezes) return;
+    if (!lekerdezes) {
+      eredmenyMegjelenito.innerHTML = "Nincs adat a mezőben.";
+      return;
+    };
 
     try {
       const eredmeny = adatbazis.exec(lekerdezes);
