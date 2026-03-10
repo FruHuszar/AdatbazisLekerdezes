@@ -1,0 +1,175 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: var(--color-font);
+}
+
+th,
+td {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+
+#menuBtn {
+    width: 5.5vh;
+    height: 5.5vh;
+    object-fit: cover;
+    position: fixed;
+    top: 3vh;
+    right: 3vh;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+#fullMenu {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--color-bg) url("../img/background.jpg") no-repeat center / cover;
+}
+
+#bg {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    position: fixed;
+    padding: 20px;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: var(--color-bg-rgba);
+}
+
+#fullMenu select {
+    width: 80%;
+    max-width: 500px;
+    padding: 3vh;
+    border: 2px solid var(--color-font);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15.6px);
+    -webkit-backdrop-filter: blur(15.6px);
+    text-align: center;
+    font-size: 16px;
+    color: var(--color-font);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+#fullMenu select option {
+    border-radius: var(--radius);
+    color: var(--color-font);
+    background-color: black;
+}
+
+#databaseInfos {
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    padding: 20px 0; /* Csak függőleges padding, az oldalsót elvesszük */
+    border: 2px solid var(--color-font);
+    border-radius: var(--radius);
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15.6px);
+    overflow: hidden; /* Ez vágja le a többi slide-ot */
+}
+
+#carouselViewport {
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#carouselTrack {
+    display: flex;
+    transition: transform .35s ease-in-out;
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Fix alapméret */
+}
+
+.carouselSlide {
+    /* MATEMATIKAILAG PONTOS SZÉLESSÉG */
+    min-width: 100%;
+    width: 100%;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0; /* Minden paddingot kiveszünk, ami eltolhatná */
+    letter-spacing: 1
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    box-sizing: border-box;
+}
+
+/* Beljebb toljuk a tartalmat, nem a slide-ot */
+.carouselSlide h3, 
+.carouselSlide .table-container,
+.summarySlide p {
+    width: 85%; /* Így marad hely kétoldalt a nyilaknak */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.table-container {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 220px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-overflow-scrolling: touch;
+}
+
+.carouselSlide table {
+    width: auto;
+    min-width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap; /* Hogy lehessen görgetni oldalra */
+}
+
+.carouselSlide th, .carouselSlide td {
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Navigációs gombok javítása, hogy ne tolják el a slide-okat */
+.carouselArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0,0,0,0.6);
+    border: none;
+    color: white;
+    padding: 12px 8px;
+    cursor: pointer;
+}
+
+#prevSlide { left: 0; border-radius: 0 5px 5px 0; }
+#nextSlide { right: 0; border-radius: 5px 0 0 5px; }
+
+#carouselDots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    padding-top: 15px;
+}

@@ -1,0 +1,33 @@
+{
+  "name": "SQL Lekérdezés Gyakorló | Fru Huszar",
+  "short_name": "SQL Gyakorló",
+  "description": "Gyakorold az SQL lekérdezéseket interaktívan, akár offline is.",
+  "start_url": "/AdatbazisLekerdezes/",
+  "display": "standalone",
+  "background_color": "#313628",
+  "theme_color": "#ffe4c4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["education", "developer tools"],
+  "screenshots": [
+    {
+      "src": "img/screenshot-mobile.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "label": "SQL Szerkesztő mobilnézetben"
+    }
+  ]
+}

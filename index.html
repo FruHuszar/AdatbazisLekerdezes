@@ -2,17 +2,100 @@
 <html lang="hu">
 
 <head>
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-13879126046"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-13879126046');
+</script>
+    
+    
     <meta charset="UTF-8">
-    <title>SQL gyakorló</title>
-    <link rel="stylesheet" href="css/sytle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>SQL Lekérdezés Gyakorló | Fru Huszar</title>
+    <meta name="description" content="Gyakorold az SQL lekérdezéseket interaktívan! Használj előre betöltött adatbázisokat vagy hozd létre sajátodat. Ingyenes online SQL editor tanuláshoz.">
+    <link rel="canonical" href="https://fruhuszar.github.io/AdatbazisLekerdezes/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Fru Huszar">
+    <meta name="theme-color" content="#ffe4c4">
+
+
+    <meta property="og:title" content="SQL Lekérdezés Gyakorló | Interaktív Tanulás">
+    <meta property="og:description" content="Írj, futtass és tesztelj SQL kódokat közvetlenül a böngésződben.">
+    <meta property="og:image" content="https://fruhuszar.github.io/AdatbazisLekerdezes/img/og-image.png">
+    <meta property="og:image:alt" content="Interaktív SQL editor sötét módban, lekérdezési eredménnyel és adatbázis táblákkal.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fruhuszar.github.io/AdatbazisLekerdezes/">
+    <meta property="og:site_name" content="SQL Lekérdezés Gyakorló">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SQL Lekérdezés Gyakorló">
+    <meta name="twitter:image" content="https://fruhuszar.github.io/AdatbazisLekerdezes/img/og-image.png">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js" as="script">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/database.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/mobile.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
-    <script type="module" src="js/sql.js"></script>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://fruhuszar.github.io/AdatbazisLekerdezes/#person",
+          "name": "Fru Huszar",
+          "url": "https://fruhuszar.github.io/AdatbazisLekerdezes/",
+          "sameAs": [
+            "https://github.com/FruHuszar",
+            "https://www.cgtrader.com/designers/71yui"
+          ],
+          "jobTitle": "Software Engineer & Designer"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "SQL Lekérdezés Gyakorló",
+          "url": "https://fruhuszar.github.io/AdatbazisLekerdezes/",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Web",
+          "author": { "@id": "https://fruhuszar.github.io/AdatbazisLekerdezes/#person" },
+          "description": "Gyakorold az SQL lekérdezéseket egyszerűen! Használj előre betöltött adatbázisokat vagy saját SQL kódod.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "HUF"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Főoldal",
+            "item": "https://fruhuszar.github.io/AdatbazisLekerdezes/"
+          }]
+        }
+      ]
+    }
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js" defer></script>
+    <script type="module" src="js/sql.js" defer></script>
+    <link rel="manifest" href="manifest.json">
+    
+    
 </head>
 
+
 <body>
+    <div id="main-bg">
     <main>
         <section>
             <h2>SQL gyakorló</h2>
@@ -24,14 +107,14 @@
 
         <footer>
             <div>
-                <a href="https://github.com/FruHuszar" target="_blank"><img src="img/profile.jpeg" alt="profile picture"
+                <a href="https://github.com/FruHuszar" target="_blank"><img src="https://github.com/FruHuszar.png" alt="profile picture"
                         id="profile"></a>
-                <p>♥</p>
+                <p>♥ Fru</p>
             </div>
             <div>
-                <p>10h spent</p>
+                <p>16h spent</p>
                 <span class="img-container">
-                    <a href="#"><img src="img/heart.png" alt="heart ikon, kattints az oldal beszívezéséhez."></a>
+                    <a href="javascript:void(0);" id="heart-button"><img src="img/heart.png" alt="heart ikon, kattints az oldal beszívezéséhez."></a>
                     <a href="https://www.cgtrader.com/designers/71yui" target="_blank"><img src="img/3d.png"
                             alt="3d ikon, erre kattintással átmehetsz a 3d oldalamra."></a>
                     <a href="index.html"><img src="img/refresh.png"
@@ -44,17 +127,29 @@
 
     <img id="menuBtn" src="img/mysql.png" alt="Menu">
     <div id="fullMenu">
-        <div id="databaseInfos"></div>
+        <div id="bg">
+        <div id="databaseInfos">
+            <div id="carouselViewport">
+                <div id="carouselTrack"></div>
+            </div>
+
+            <button id="prevSlide" class="carouselArrow">❮</button>
+            <button id="nextSlide" class="carouselArrow">❯</button>
+
+            <div id="carouselDots"></div>
+        </div>
         <select id="adatbazisSelector">
             <option value="iskola">Adatbázis példa 1 - Iskola</option>
             <option value="mozi">Adatbázis példa 2 - Mozi</option>
             <option value="ikea">Adatbázis példa 3 - Ikea</option>
             <option value="konyvtar">Adatbázis példa 4 - Könyvtár</option>
         </select>
+        </div>        
     </div>
-
+    </div>
     <script src="js/script.js"></script>
-
+    <script src="js/heart-button.js"></script>
+ 
 </body>
 
 </html>
