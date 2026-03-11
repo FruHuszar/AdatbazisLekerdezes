@@ -52,3 +52,65 @@
     INSERT INTO Olvaso VALUES (1, 'Varga Péter', 'Pécs, Fő u. 5.', 0), (2, 'Molnár Dóra', 'Győr, Tó u. 12.', 500);
     INSERT INTO Kolcsonzes VALUES (1, 1, 1, '2025-02-01', '2025-02-15'), (2, 2, 2, '2025-02-10', NULL);
 `;
+  export const jegyekSql = `
+    -- TÁBLÁK LÉTREHOZÁSA
+CREATE TABLE traders (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    description TEXT
+);
+
+CREATE TABLE events (
+    id INTEGER PRIMARY KEY,
+    date TEXT NOT NULL,
+    max_number INTEGER NOT NULL,
+    trade_id INTEGER NOT NULL,
+    FOREIGN KEY (trade_id) REFERENCES traders(id)
+);
+
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL
+);
+
+CREATE TABLE tickets (
+    id INTEGER PRIMARY KEY,
+    status TEXT NOT NULL,
+    events_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    FOREIGN KEY (events_id) REFERENCES events(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- ADATOK BESZÚRÁSA
+
+-- traders
+INSERT INTO traders VALUES 
+(1, 'Funcode', 'Tech konferenciák szervezése'),
+(2, 'MusicLive', 'Koncertek szervezése'),
+(3, 'SportPlus', 'Sportesemények szervezése');
+
+-- events
+INSERT INTO events VALUES
+(1, '2026-04-01', 5, 1),   -- Funcode esemény, max 5 jegy
+(2, '2026-05-15', 3, 2),   -- MusicLive esemény, max 3 jegy
+(3, '2026-06-20', 2, 3);   -- SportPlus esemény, max 2 jegy (sold out lesz)
+
+-- users
+INSERT INTO users VALUES
+(1, 'Anna Nagy', 'anna@example.com'),
+(2, 'Béla Kovács', 'bela@example.com'),
+(3, 'Eszter Tóth', 'eszter@example.com');
+
+-- tickets
+INSERT INTO tickets VALUES
+-- Funcode esemény (nem sold out)
+(1, 'active', 1, 1),
+(2, 'active', 1, 2),
+-- MusicLive esemény (nem sold out)
+(3, 'active', 2, 2),
+-- SportPlus esemény (sold out: max 2 jegy)
+(4, 'active', 3, 1),
+(5, 'active', 3, 3);
+`;
