@@ -1,4 +1,4 @@
-import { iskolaSql, moziSql, ikeaSql, konyvtarSql } from "./database.js";
+import { iskolaSql, moziSql, ikeaSql, konyvtarSql, jegyekSql } from "./database.js";
 
 initSqlJs({
   locateFile: (fajl) =>
@@ -131,6 +131,7 @@ const adatbazisStrukturaMegjelenites = () => {
     else if (valasztott === "mozi") adatbazisFrissitese(moziSql);
     else if (valasztott === "ikea") adatbazisFrissitese(ikeaSql);
     else if (valasztott === "konyvtar") adatbazisFrissitese(konyvtarSql);
+    else if (valasztott === "jegyek") adatbazisFrissitese(jegyekSql);
   });
 
   adatbazis.run(iskolaSql);
